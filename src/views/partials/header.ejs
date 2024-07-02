@@ -1,9 +1,58 @@
-<header>
-    <h1>Bienvenido a Mi Página Web</h1>
-</header>
-<nav>
-    <a href="#home">Inicio</a>
-    <a href="#about">Acerca de</a>
-    <a href="#services">Servicios</a>
-    <a href="#contact">Contacto</a>
-</nav>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a Mi Página Web</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background: #007bff;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #f8f9fa;
+            padding: 10px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            background-color: #444;
+            color: #fff;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a Mi Página Web</h1>
+        <nav>
+            <a href="/">Inicio</a>
+            <a href="#about">Acerca de</a>
+            <a href="#services">Servicios</a>
+            <a href="#contact">Contacto</a>
+            <a href="/login" class="button">Iniciar Sesión</a>
+            <a href="/register" class="button">Registrarse</a>
+        </nav>
+    </header>
+</body>
+</html>

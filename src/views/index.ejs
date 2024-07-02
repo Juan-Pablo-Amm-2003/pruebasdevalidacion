@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../views/partials/css.css">
     <title>Mi Página Web</title>
     <style>
-   
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -13,27 +13,29 @@
             background-color: #f4f4f4;
         }
         header {
-            background-color: #333;
-            color: #fff;
+            background: #007bff;
+            color: white;
             padding: 10px 0;
             text-align: center;
         }
         nav {
             display: flex;
             justify-content: center;
-            background-color: #444;
+            background: #f8f9fa;
+            padding: 10px 0;
         }
         nav a {
-            color: #fff;
-            padding: 14px 20px;
+            margin: 0 15px;
+            color: #007bff;
             text-decoration: none;
-            text-align: center;
+            font-weight: bold;
         }
         nav a:hover {
-            background-color: #555;
+            text-decoration: underline;
         }
         .container {
             padding: 20px;
+            text-align: center;
         }
         h1, h2, h3 {
             color: #333;
@@ -51,11 +53,41 @@
             bottom: 0;
             width: 100%;
         }
-    </style>
+        .button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            background-color: #444;
+            color: #fff;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .button:hover {
+            background-color: #555;
+        }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <%- include('partials/header') %>
+    <header>
+        <h1>Bienvenido a Mi Página Web</h1>
+        <nav>
+            <a href="/" class="button">Inicio</a>
+            <a href="/about" class="button">Acerca de</a>
+            <a href="/services" class="button">Servicios</a>
+            <a href="/contact" class="button">Contacto</a>
+            <% if (user) { %>
+                <a href="/special" class="button">Especial</a>
+                <a href="/logout" class="button">Cerrar Sesión</a>
+            <% } else { %>
+                <a href="/login" class="button">Iniciar Sesión</a>
+                <a href="/register" class="button">Registrarse</a>
+            <% } %>
+        </nav>
+    </header>
 
     <div class="container">
         <h2>Encabezado Secundario</h2>
@@ -63,39 +95,19 @@
         <h3>Sub-encabezado</h3>
         <p>Otro párrafo de ejemplo con algo más de contenido para mostrar la apariencia del texto en esta plantilla.</p>
 
-        <!-- Formulario de Inicio de Sesión -->
-        <h2>Iniciar Sesión</h2>
-        <form action="/login" method="POST">
-            <label for="username">Usuario:</label>
-            <input type="text" id="username" name="username" required>
-            <br>
-            <label for="password">Contraseña:</label>
-            <input type="password" id="password" name="password" required>
-            <br>
-            <button type="submit">Iniciar Sesión</button>
-        </form>
-
-        <!-- Formulario de Registro -->
-        <h2>Registro</h2>
-        <form action="/register" method="POST">
-            <label for="regUsername">Usuario:</label>
-            <input type="text" id="regUsername" name="username" required>
-            <br>
-            <label for="regPassword">Contraseña:</label>
-            <input type="password" id="regPassword" name="password" required>
-            <br>
-            <button type="submit">Registrarse</button>
-        </form>
-
-        <!-- Mensajes de Error o Éxito -->
-        <% if (typeof errorMessage !== 'undefined') { %>
-            <p style="color: red;"><%= errorMessage %></p>
-        <% } %>
-        <% if (typeof successMessage !== 'undefined') { %>
-            <p style="color: green;"><%= successMessage %></p>
-        <% } %>
+        <!-- Botón desbloqueable -->
+        <button id="specialButton" class="button hidden" onclick="location.href='/special'">Acceder a Especial</button>
     </div>
 
-    <%- include('partials/footer') %>
+    <footer class="footer">
+        <p>Pie de página - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        // Script para desbloquear el botón especial al iniciar sesión
+        <% if (user) { %>
+            document.getElementById('specialButton').classList.remove('hidden');
+        <% } %>
+    </script>
 </body>
 </html>
